@@ -1,9 +1,10 @@
 const mongoose = require('mongoose')
 
-const itemSchema = new mongoose.Schema({
+const ItemSchema = new mongoose.Schema({
     name: {
         type: String,
         required: [true, 'item name must be provided'],
+        unique: true
     },
     suggestedPrice: {
         type: "object",
@@ -59,10 +60,14 @@ const itemSchema = new mongoose.Schema({
             }
         }
     },
+    itemImageURI: {
+        type: String,
+        required: [true, 'item image uri must be provided'],
+    },
     updatedAt: {
         type: Date,
         default: Date.now(),
-      },
+      }
 })
 
-module.exports = mongoose.model('Item', itemSchema)
+module.exports = mongoose.model('Item', ItemSchema)

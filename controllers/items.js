@@ -7,7 +7,7 @@ const getItem = async (req, res) => {
 }
 
 const createItem = async (req, res) => {
-    res.send("Create item")
+    res.json(req.user)
 }
 
 const updateItem = async (req, res) => {

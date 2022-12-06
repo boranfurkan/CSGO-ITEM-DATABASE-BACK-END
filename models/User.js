@@ -1,5 +1,7 @@
+require('dotenv').config();
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs')
+const jwt = require('jsonwebtoken')
 
 const UserSchema = new mongoose.Schema({
     username: {
@@ -24,6 +26,18 @@ UserSchema.pre('save', async function() {
 
 UserSchema.methods.getUsername = function() {
     return this.username
+}
+
+UserSchema.methods.createJWT = function() {
+    return jwt.sign(
+        {userId:this._id, username: this.username}, 
+        process.env.JWT_SECRET, 
+        {expiresIn: process.env.JWT_LIFETIME})
+}
+
+UserSchema.methods.comparePassword = async function(candidatePassword) {
+    const isMatch = await bcrypt.compare(candidatePassword, this.password)
+    return isMatch
 }
 
 module.exports = mongoose.model('User', UserSchema)

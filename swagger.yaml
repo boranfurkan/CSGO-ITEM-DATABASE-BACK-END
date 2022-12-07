@@ -1,0 +1,139 @@
+openapi: 3.0.0
+info:
+  title: CSGO ITEM DATABASE
+  description: ''
+  contact: {}
+  version: '1.0'
+servers:
+- url: https://csgo-items--api.herokuapp.com/api/v1
+  variables: {}
+paths:
+  /auth/register:
+    post:
+      tags:
+      - Auth
+      summary: REGISTER USER
+      description: ''
+      operationId: REGISTERUSER
+      parameters: []
+      requestBody:
+        description: 'Create new user in the database.'
+        content:
+          application/json:
+            schema:
+              $ref: ''
+            example:
+              username: 'Furkan'
+              password: 'Pass123456'
+        required: true
+      responses:
+        '200':
+          description: 'Success'
+          headers: {}
+      deprecated: false
+      security: []
+  /auth/login:
+    post:
+      tags:
+      - Auth
+      summary: LOGIN
+      description: ''
+      operationId: LOGIN
+      parameters: []
+      requestBody:
+        description: 'Login to the user saved in the database.'
+        content:
+          application/json:
+            schema:
+              $ref: ''
+            example:
+              username: 'Furkan'
+              password: 'Pass123456'
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+  /items:
+    post:
+      tags:
+      - Items
+      summary: CREATE ITEM
+      description: ''
+      operationId: CREATEITEM
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+    get:
+      tags:
+      - Items
+      summary: GET ALL ITEMS
+      description: ''
+      operationId: GETALLITEMS
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /items/{name}:
+    parameters:
+      - in: path
+        name: name
+        schema:
+          type: string
+        required: true
+        description: 'The item name'
+    get:
+      tags:
+      - Items
+      summary: GET SINGLE ITEM
+      description: ''
+      operationId: GETSINGLEITEM
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+    patch:
+      tags:
+      - Items
+      summary: UPDATE ITEM
+      description: ''
+      operationId: UPDATEITEM
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+    delete:
+      tags:
+      - Items
+      summary: DELETE ITEM
+      description: ''
+      operationId: DELETEITEM
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+components:
+  securitySchemes:
+    httpBearer:
+      type: http
+      scheme: bearer
+security:
+- httpBearer: []
+tags:
+- name: Auth
+  description: ''
+- name: Items
+  description: ''

@@ -26,7 +26,7 @@ npm install && npm start
 
 #### Login User
 
-- Validate - email, password - in controller
+- Validate - username, password - in controller
 - If username or password is missing, throw BadRequestError
 - Find User
 - Compare Passwords
@@ -37,7 +37,7 @@ npm install && npm start
 #### Mongoose Errors
 
 - Validation Errors
-- Duplicate (Email)
+- Duplicate (username)
 - Cast Error
 
 #### Security

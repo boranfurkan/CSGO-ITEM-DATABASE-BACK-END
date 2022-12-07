@@ -4,7 +4,7 @@
   "description": "Created a new API system for counter strike global offensive item's database.",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "node app.js"
   },
   "author": "Furkan Boran",
   "license": "ISC",
@@ -27,5 +27,8 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.9"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }

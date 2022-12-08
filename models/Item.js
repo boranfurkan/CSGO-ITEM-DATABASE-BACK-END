@@ -57,6 +57,18 @@ const ItemSchema = new mongoose.Schema({
             },
             "buyOrder": {
                 type: Number
+            },
+            "listing7": {
+                type: Number
+            },
+            "listing30": {
+                type: Number
+            },
+            "listing60": {
+                type: Number
+            },
+            "listing90": {
+                type: Number
             }
         }
     },

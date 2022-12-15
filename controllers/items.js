@@ -3,8 +3,19 @@ const { StatusCodes } = require('http-status-codes')
 const { BadRequestError, NotFoundError } = require('../errors')
 
 const getAllItems = async (req, res) => {
-    const items = await Item.find().sort("name")
-    res.status(StatusCodes.OK).json({ items, count: items.length })
+    const { page = 1, limit = 50 } = req.query;
+    const items = await Item.find().sort("name").limit(limit * 1).skip((page - 1) * limit).exec();
+
+    const itemsCollectionCount = await Item.count()
+    const totalPages = Math.ceil(itemsCollectionCount / limit)
+
+    res.status(StatusCodes.OK).json({ 
+        items, 
+        paging: {
+            total: itemsCollectionCount,
+            currentPage: page,
+            totalPages: totalPages}
+        })
 }
 
 const getItem = async (req, res) => {
